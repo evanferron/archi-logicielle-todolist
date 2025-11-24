@@ -17,10 +17,14 @@ export default function TaskPreview(task: Readonly<Task>) {
           marginBottom: 8,
           background: "white",
           textAlign: "left",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
         <h3 style={{ margin: 0 }}>{task.name}</h3>
-        <p style={{ margin: 0 }}>Status: {task.status}</p>
+        <p style={{ margin: 0 }}>{task.status === "pending" ? "✗" : "✓"}</p>
       </button>
 
       {open && (
@@ -35,6 +39,8 @@ export default function TaskPreview(task: Readonly<Task>) {
             alignItems: "center",
             justifyContent: "center",
             zIndex: 9999,
+            alignSelf: "center",
+            width: "15rem",
           }}
           onClick={() => setOpen(false)}
         >

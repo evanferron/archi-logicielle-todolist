@@ -25,24 +25,36 @@ const Todolist: React.FC = () => {
     <main>
       <h1>Ma Todo List</h1>
       <div>
-        <button onClick={() => setShowCreateModal(true)}>Créer une tâche</button>
+        <button onClick={() => setShowCreateModal(true)}>
+          Créer une tâche
+        </button>
       </div>
 
       {showCreateModal && (
-        <dialog open style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: "rgba(0,0,0,0.4)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 1000,
-          border: "none",
-        }}>
-          <div style={{ background: "#fff", padding: 20, borderRadius: 6, minWidth: 320 }}>
+        <dialog
+          open
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: "rgba(0,0,0,0.4)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1000,
+            border: "none",
+          }}
+        >
+          <div
+            style={{
+              background: "#fff",
+              padding: 20,
+              borderRadius: 6,
+              minWidth: 320,
+            }}
+          >
             <CreateTask
               onCreate={(task) => {
                 handleCreateTask(task);
@@ -53,7 +65,7 @@ const Todolist: React.FC = () => {
         </dialog>
       )}
 
-      <div style={{ marginTop: "2rem" }}>
+      <div id="todolist">
         {todolist.tasks.length === 0 ? (
           <p>Aucune tâche pour le moment.</p>
         ) : (
