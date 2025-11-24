@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import type { Task } from "../../models/task";
+import type { Task } from "../models/task";
 
 const CreateTask: React.FC<{
   onCreate: (task: Task) => void;
@@ -49,7 +49,11 @@ const CreateTask: React.FC<{
       </div>
       <div>
         <label htmlFor="create-status">Status :</label>
-        <select id="create-status" value={status} onChange={(e) => setStatus(e.target.value as "pending")}>
+        <select
+          id="create-status"
+          value={status}
+          onChange={(e) => setStatus(e.target.value as "pending")}
+        >
           <option value="pending">À faire</option>
           <option value="completed">Terminée</option>
         </select>

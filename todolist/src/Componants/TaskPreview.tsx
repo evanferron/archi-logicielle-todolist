@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Task } from "../../models/task";
+import type { Task } from "../models/task";
 import TaskDetails from "./TaskDetails";
 
 export default function TaskPreview(task: Readonly<Task>) {

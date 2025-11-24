@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getTasks } from "../services/task";
-import TaskPreview from "./Componants/TaskPreview";
-import CreateTask from "./Componants/CreateTask";
+import TaskPreview from "../Componants/TaskPreview";
+import CreateTask from "../Componants/CreateTask";
 import type { Task } from "../models/task";
 import type { TodoList } from "../models/todolist";
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Task } from "../../models/task";
+import type { Task } from "../models/task";
 
 const TaskDetails = ({ name, description, status, date }: Task) => {
   const [isEditing, setIsEditing] = useState(false);
