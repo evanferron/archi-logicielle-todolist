@@ -54,6 +54,23 @@ body {
   font-variant-ligatures: common-ligatures;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#todolist {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 /* Links */
 a {
   color: var(--accent);

@@ -21,17 +21,17 @@ const Todolist: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <main>
       <h1>Ma Todo List</h1>
       <CreateTask onCreate={handleCreateTask} />
-      <div style={{ marginTop: "2rem" }}>
+      <div id="todolist">
         {todolist.tasks.length === 0 ? (
           <p>Aucune tâche pour le moment.</p>
         ) : (
           todolist.tasks.map((task, idx) => <TaskPreview key={idx} {...task} />)
         )}
       </div>
-    </div>
+    </main>
   );
 };
 
