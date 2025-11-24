@@ -22,7 +22,7 @@ const Todolist: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <main>
       <h1>Ma Todo List</h1>
       <div>
         <button onClick={() => setShowCreateModal(true)}>Créer une tâche</button>
@@ -60,7 +60,7 @@ const Todolist: React.FC = () => {
           todolist.tasks.map((task, idx) => <TaskPreview key={idx} {...task} />)
         )}
       </div>
-    </div>
+    </main>
   );
 };
 
