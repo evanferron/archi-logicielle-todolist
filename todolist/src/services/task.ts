@@ -1,5 +1,6 @@
 import data from "../data.json";
 import type { Task } from "../models/task";
+import type { TodoList } from "../models/todolist";
 
 type RawTask = {
     id: string;
@@ -18,7 +19,7 @@ const toTask = (t: RawTask): Task => ({
 });
 
 // Initialize an in-memory store from data.json
-let store: Task[] = [];
+let store: TodoList = { tasks: [] };
 (() => {
     const payload = data as unknown;
 
@@ -29,21 +30,21 @@ let store: Task[] = [];
         Array.isArray((payload as { tasks: unknown }).tasks)
     ) {
         const raw = (payload as { tasks: RawTask[] }).tasks;
-        store = raw.map(toTask);
+        store.tasks = raw.map(toTask);
         return;
     }
 
     if (Array.isArray(payload as unknown[])) {
         const raw = payload as RawTask[];
-        store = raw.map(toTask);
+        store.tasks = raw.map(toTask);
         return;
     }
 
-    store = [];
+    store = { tasks: [] };
 })();
 
-export const getTasks = async (): Promise<Task[]> => {
-    return [...store];
+export const getTasks = async (): Promise<TodoList> => {
+    return store;
 };
 
 export const createTask = async (task: Omit<Task, "id"> & { id?: string }): Promise<Task> => {
@@ -55,27 +56,27 @@ export const createTask = async (task: Omit<Task, "id"> & { id?: string }): Prom
         description: task.description,
     };
 
-    store.push(newTask);
+    store.tasks.push(newTask);
     return newTask;
 };
 
 export const editTask = async (taskId: string, newTask: Partial<Task>): Promise<Task | null> => {
-    const idx = store.findIndex((t) => t.id === taskId);
+    const idx = store.tasks.findIndex((t) => t.id === taskId);
     if (idx === -1) return null;
 
     const updated: Task = {
-        ...store[idx],
+        ...store.tasks[idx],
         ...newTask,
-        date: newTask.date ?? store[idx].date,
+        date: newTask.date ?? store.tasks[idx].date,
     };
 
-    store[idx] = updated;
+    store.tasks[idx] = updated;
     return updated;
 };
 
 export const deleteTask = async (taskId: string): Promise<boolean> => {
-    const idx = store.findIndex((t) => t.id === taskId);
+    const idx = store.tasks.findIndex((t) => t.id === taskId);
     if (idx === -1) return false;
-    store.splice(idx, 1);
+    store.tasks.splice(idx, 1);
     return true;
 };
