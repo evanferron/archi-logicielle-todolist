@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getTasks } from "../services/task";
-import TaskPreview from "../Componants/TaskPreview";
-import CreateTask from "../Componants/CreateTask";
 import type { Task } from "../models/task";
 import type { TodoList } from "../models/todolist";
+import { CreateTask } from "../Components/CreateTask";
+import { TaskPreview } from "../Components/TaskPreview";
 
 const Todolist: React.FC = () => {
   const [todolist, setTodolist] = useState<TodoList>({ tasks: [] });
@@ -69,7 +69,17 @@ const Todolist: React.FC = () => {
         {todolist.tasks.length === 0 ? (
           <p>Aucune tâche pour le moment.</p>
         ) : (
-          todolist.tasks.map((task, idx) => <TaskPreview key={idx} {...task} />)
+          todolist.tasks.map((task, idx) => (
+            <TaskPreview
+              key={idx}
+              task={task}
+              onChange={(updatedTask: Task) => {
+                const updatedTasks = [...todolist.tasks];
+                updatedTasks[idx] = updatedTask;
+                setTodolist({ tasks: updatedTasks });
+              }}
+            />
+          ))
         )}
       </div>
     </main>

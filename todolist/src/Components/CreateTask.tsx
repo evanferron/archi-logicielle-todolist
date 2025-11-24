@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import type { Task } from "../models/task";
 
-const CreateTask: React.FC<{
+export const CreateTask: React.FC<{
   onCreate: (task: Task) => void;
   onClose?: () => void;
 }> = ({ onCreate, onClose }) => {
@@ -44,7 +44,6 @@ const CreateTask: React.FC<{
           id="create-desc"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          required
         />
       </div>
       <div>
@@ -69,5 +68,3 @@ const CreateTask: React.FC<{
     </form>
   );
 };
-
-export default CreateTask;

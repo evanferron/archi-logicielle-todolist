@@ -1,8 +1,13 @@
 import { useState } from "react";
 import type { Task } from "../models/task";
-import TaskDetails from "./TaskDetails";
+import { TaskDetails } from "./TaskDetails";
 
-export default function TaskPreview(task: Readonly<Task>) {
+type Props = {
+  task: Readonly<Task>;
+  onChange?: (task: Task) => void;
+};
+
+export const TaskPreview = ({ task, onChange }: Props) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -60,10 +65,10 @@ export default function TaskPreview(task: Readonly<Task>) {
             <div style={{ display: "flex", justifyContent: "flex-end" }}>
               <button onClick={() => setOpen(false)}>Fermer</button>
             </div>
-            <TaskDetails {...task} />
+            <TaskDetails task={task} onChange={onChange} />
           </div>
         </div>
       )}
     </>
   );
-}
+};
