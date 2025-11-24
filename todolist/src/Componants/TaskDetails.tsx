@@ -33,7 +33,8 @@ const TaskDetails = ({ name, description, status, date }: Task) => {
             <option value="terminée">Terminée</option>
           </select>
           <p>
-            <strong>Date de création:</strong> {date.toISOString()}
+            <strong>Date de création:</strong> {date.getDay()}/{date.getMonth()}
+            /{date.getFullYear()}:{date.getHours()}:{date.getMinutes()}
           </p>
           <button onClick={handleSave}>Enregistrer</button>
         </>
@@ -47,7 +48,8 @@ const TaskDetails = ({ name, description, status, date }: Task) => {
             <strong>Status:</strong> {editStatus}
           </p>
           <p>
-            <strong>Date de création:</strong> {date.toISOString()}
+            <strong>Date de création:</strong> {date.getDay()}/{date.getMonth()}
+            /{date.getFullYear()}:{date.getHours()}:{date.getMinutes()}
           </p>
           <button onClick={() => setIsEditing(true)}>Modifier</button>
         </>
