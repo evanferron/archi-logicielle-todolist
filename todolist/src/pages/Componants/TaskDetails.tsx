@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { Task } from "../../models/task";
 
 const TaskDetails = ({ name, description, status, date }: Task) => {
@@ -18,26 +18,37 @@ const TaskDetails = ({ name, description, status, date }: Task) => {
           <input
             type="text"
             value={editName}
-            onChange={e => setEditName(e.target.value)}
+            onChange={(e) => setEditName(e.target.value)}
           />
           <textarea
             value={editDescription}
-            onChange={e => setEditDescription(e.target.value)}
+            onChange={(e) => setEditDescription(e.target.value)}
           />
-          <select value={editStatus} onChange={e => setEditStatus(e.target.value as typeof status)}>
+          <select
+            value={editStatus}
+            onChange={(e) => setEditStatus(e.target.value as typeof status)}
+          >
             <option value="à faire">À faire</option>
             <option value="en cours">En cours</option>
             <option value="terminée">Terminée</option>
           </select>
-          <p><strong>Date de création:</strong> {date.toISOString()}</p>
+          <p>
+            <strong>Date de création:</strong> {date.toISOString()}
+          </p>
           <button onClick={handleSave}>Enregistrer</button>
         </>
       ) : (
         <>
           <h2>{editName}</h2>
-          <p><strong>Description:</strong> {editDescription}</p>
-          <p><strong>Status:</strong> {editStatus}</p>
-          <p><strong>Date de création:</strong> {date.toISOString()}</p>
+          <p>
+            <strong>Description:</strong> {editDescription}
+          </p>
+          <p>
+            <strong>Status:</strong> {editStatus}
+          </p>
+          <p>
+            <strong>Date de création:</strong> {date.toISOString()}
+          </p>
           <button onClick={() => setIsEditing(true)}>Modifier</button>
         </>
       )}
