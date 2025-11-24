@@ -33,8 +33,9 @@ export default function TaskPreview(task: Readonly<Task>) {
           onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
           style={{
             position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.5)",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -48,7 +49,7 @@ export default function TaskPreview(task: Readonly<Task>) {
             role="dialog"
             aria-modal="true"
             style={{
-              background: "white",
+              background: "rgba(208, 208, 208, 1)",
               padding: 20,
               borderRadius: 8,
               minWidth: 320,
