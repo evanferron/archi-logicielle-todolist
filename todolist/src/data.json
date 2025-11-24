@@ -1,0 +1,25 @@
+{
+  "tasks": [
+    {
+      "id": "t1",
+      "name": "Acheter du lait",
+      "status": "pending",
+      "date": "2025-11-24T10:00:00.000Z",
+      "description": "Aller au supermarché"
+    },
+    {
+      "id": "t2",
+      "name": "Envoyer rapport",
+      "status": "completed",
+      "date": "2025-11-20T15:30:00.000Z",
+      "description": "Envoyer rapport hebdomadaire par email"
+    },
+    {
+      "id": "t3",
+      "name": "Appeler Marie",
+      "status": "pending",
+      "date": "2025-11-25T09:00:00.000Z",
+      "description": ""
+    }
+  ]
+}
